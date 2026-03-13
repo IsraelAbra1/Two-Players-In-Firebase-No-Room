@@ -22,6 +22,9 @@ public class GameActivity extends AppCompatActivity {
     private FbModule fbModule;
     private GameTurn currentGameTurn;
 
+    private TextView tvMyCards;
+    private TextView tvOtherCards;
+
     private final String[] colors = {"Red", "Blue", "Green", "Yellow"};
 
     @Override
@@ -39,6 +42,9 @@ public class GameActivity extends AppCompatActivity {
         player = getIntent().getStringExtra("player");
 
         TextView tvPlayerName = findViewById(R.id.tvPlayerName);
+        tvMyCards = findViewById(R.id.tvMyCards);
+        tvOtherCards = findViewById(R.id.tvOtherCards);
+
         if (player != null) {
             tvPlayerName.setText(player);
         }
@@ -53,13 +59,12 @@ public class GameActivity extends AppCompatActivity {
             finish();
         }
 
-        currentGameTurn = new GameTurn(player1Cards, player2Cards);
+        updateUI();
 
         fbModule.listenToGameTurn(new FbModule.GameTurnListener() {
             @Override
             public void onGameTurnChanged(GameTurn gameTurn) {
                 currentGameTurn = gameTurn;
-                // Only update the other player's cards to avoid overwriting own cards
                 if ("player1".equals(player)) {
                     if (gameTurn.getPlayer2() != null && !gameTurn.getPlayer2().isEmpty()) {
                         player2Cards = gameTurn.getPlayer2();
@@ -69,6 +74,7 @@ public class GameActivity extends AppCompatActivity {
                         player1Cards = gameTurn.getPlayer1();
                     }
                 }
+                updateUI();
             }
         });
 
@@ -80,6 +86,25 @@ public class GameActivity extends AppCompatActivity {
                 fbModule.writeGameTurn(turnToSend);
             }
         });
+    }
+
+    private void updateUI() {
+        if ("player1".equals(player)) {
+            tvMyCards.setText(formatCards(player1Cards));
+            tvOtherCards.setText(formatCards(player2Cards));
+        } else {
+            tvMyCards.setText(formatCards(player2Cards));
+            tvOtherCards.setText(formatCards(player1Cards));
+        }
+    }
+
+    private String formatCards(ArrayList<Card> cards) {
+        if (cards == null || cards.isEmpty()) return "None";
+        StringBuilder sb = new StringBuilder();
+        for (Card card : cards) {
+            sb.append(card.getColor()).append(" ").append(card.getNum()).append("\n");
+        }
+        return sb.toString();
     }
 
     @Override

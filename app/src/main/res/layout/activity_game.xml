@@ -20,25 +20,57 @@
         tools:text="Player X" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvMyCardsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game Activity"
-        app:layout_constraintBottom_toTopOf="@+id/btnSendCards"
+        android:layout_marginTop="24dp"
+        android:text="My Cards:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerName" />
+
+    <TextView
+        android:id="@+id/tvMyCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayerName"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyCardsLabel"
+        tools:text="Card 1, Card 2..." />
+
+    <TextView
+        android:id="@+id/tvOtherCardsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Other Player's Cards:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyCards" />
+
+    <TextView
+        android:id="@+id/tvOtherCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOtherCardsLabel"
+        tools:text="Card A, Card B..." />
 
     <Button
         android:id="@+id/btnSendCards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:text="Send Cards to Firebase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
