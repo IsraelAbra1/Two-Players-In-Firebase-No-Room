@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845618528445",
+    "project_id": "twoplayersinfbnoroom",
+    "storage_bucket": "twoplayersinfbnoroom.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845618528445:android:c219a57363d249d02cf7d4",
+        "android_client_info": {
+          "package_name": "com.example.twoplayersinfbnoroom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Y0TvYiucXxVQvNcfP9YsJjUPcBBnQ_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
