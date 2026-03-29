@@ -67,6 +67,8 @@ public class GameActivity extends AppCompatActivity {
                 currentGameTurn = gameTurn;
                 if ("player1".equals(player)) {
                     if (gameTurn.getPlayer2() != null && !gameTurn.getPlayer2().isEmpty()) {
+                        // הבדיקה != null: מוודאת שהרשימה בכלל קיימת בתוך האובייקט שהגיע מהשרת.
+                        //הבדיקה !isEmpty(): מוודאת שיש בה קלפים. אם שחקן 2 רק נכנס למשחק ועוד לא ייצר לעצמו קלפים, אין טעם לעדכן את התצוגה שלך במידע ריק.
                         player2Cards = gameTurn.getPlayer2();
                     }
                 } else if ("player2".equals(player)) {
@@ -110,6 +112,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // // Remove the game from the database, set the value to null
         if (fbModule != null) {
             fbModule.deleteGame();
         }

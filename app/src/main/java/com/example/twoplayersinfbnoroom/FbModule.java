@@ -43,6 +43,6 @@ public class FbModule {
     }
 
     public void deleteGame() {
-        reference.removeValue();
+        reference.removeValue();  // Remove the game from the database, set the value to null
     }
 }
